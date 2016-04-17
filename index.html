@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Login">
 
 <head>
     <meta charset="UTF-8">
@@ -8,23 +7,56 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/formee-structure.css">
     <link rel="stylesheet" href="css/formee-style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/jquery-1.12.3.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  
+
+    
+    
 </head>
 
-<body>
+<body  >
+
     <header>
         <section class="content">
-            <p class="right registre-se">Registre-se</p>
-            <p class="right login">Entrar</p>
             <div class="logo"><img src="img/logo.png" alt=""></div>
             <a href="#" id="navigation" onclick=" document.getElementById('teste').style.visibility='',document.getElementById('navigation').style.visibility='hidden'"></a>
+            <p class="right registre-se"><a href="#" onclick="document.getElementById('registro').style.visibility=''">Registre-se</a></p>
+            <div ng-controller="LoginController" id="registro" style="visibility:hidden; position:absolute; margin:-100px 0 0 935px; width:200px; height:110px; background:rgba(0, 0, 0, 0.4);">
+                <!--Login-->
+                    <form action="" class="formee" id="formee">
+                        <input style="margin-top:20px; magin-left:2px; padding:10px; width:95%;" type="text" ng-model="usuario.login">
+                        <input style="margin-top:5px; width:95%; magin-left:2px;" type="password" ng-model="usuario.senha">
+                        <button ng-click="registrar(usuario)">Registrar!</button>
+                    </form>
+                <!--Final Login-->
+            </div>
+               <div ng-controller="LogarController" id="login" style="visibility:hidden; position:absolute; margin:-100px 0 0 935px; width:200px; height:110px; background:rgba(0, 0, 0, 0.4);">
+                <form action="" class="formee" id="formee">
+                    <input class="my-input" style="margin-top:20px; magin-left:2px; padding:10px; width:95%;" type="text"  ng-model="usuario.login">
+                    <input style="margin-top:5px; width:95%; magin-left:2px;" type="password" ng-model="usuario.senha">
+                    
+                    <button ng-click="compare()">Logar</button>{{result}}
+                   
+                </form>
+            </div>
+            <p class="right login"><a href="#" onclick="document.getElementById('login').style.visibility=''">Entrar</p>
             <nav id="teste" style="visibility:hidden;">
                 <ul>
-                    <li>PAGINA INICIAL</li>
-                    <li>PASSEIE PELO SHOPPING</li>
-                    <li>DOWNLOADS</li>
-                    <li>LOJAS</li>
-                    <li>PRAÇA DE ALIMENTAÇÃO</li>
-                    <li>CONTATO</li>
+                    <li><a href="index.html">PAGINA INICIAL</a></li>
+                    <li><a href="">SHOPPING</a></li>
+                    <li><a href="">DOWNLOADS</a></li>
+                    <li><a href="">LOJAS</a></li>
+                    <li><a href="">PRAÇA DE ALIMENTAÇÃO</a></li>
+                    <li><a href="">CONTATO</a></li>
                     <li class="right" style="margin-right:360px; margin-top:-230px;"><img src="img/lupa.png" alt=""></li>
                     <li>
                         <form style="position:absolute; margin:-270px 0 0 660px;" id="formee" class="formee" action="">
@@ -58,17 +90,17 @@
             <div class="destaque">
                 <img style="padding-left:60px" src="img/roupa-renner.jpg" alt="">
                 <img src="img/etiquetadesconto.png" style="position:absolute; margin:60px 0 0 -20px;" alt="">
-                <a href="" style="margin:120px 0 0 -120px;"><img src="img/botaomais.png" alt=""></a>
+                <a href="interna.html" style="position:absolute; margin:160px 0 0 -120px;"><img src="img/botaomais.png" alt=""></a>
             </div>
             <div class="destaque">
                 <img src="img/carrefour-produtos.jpg" style="padding-left:40px;" alt="">
                 <img src="img/etiquetadesconto.png" style="position:absolute; margin:100px 0 0 -90px;" alt="">
-                <a href=""><img src="img/botaomais.png" alt=""></a>
+                <a href="" style="position:absolute; margin:160px 0 0 -275px;"><img src="img/botaomais.png" alt=""></a>
             </div>
             <div class="destaque">
                 <img src="img/chili-produtos.jpg" style="padding-left:30px;" alt="">
-                <img src="img/etiquetadesconto.png" style="position:absolute; margin:60px 0 0 -100px;" alt="">
-                <a href="" style="margin:0 0 0 10px;"><img src="img/botaomais.png" alt=""></a>
+                <img src="img/etiquetadesconto.png" style="position:absolute; margin:100px 0 0 -100px;" alt="">
+                <a href="" style="position:absolute; margin:160px 0 0 -263px;"><img src="img/botaomais.png" alt=""></a>
             </div>
         </div>
     </section>
@@ -78,7 +110,9 @@
         </section>
     </footer>
 
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
