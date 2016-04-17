@@ -1,0 +1,116 @@
+<html lang="en" ng-app="Login">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hackinshop - Shopping Online</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/formee-structure.css">
+    <link rel="stylesheet" href="css/formee-style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/jquery-1.12.3.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+
+
+
+
+</head>
+
+<body>
+
+    <header>
+        <section class="content">
+            <div class="logo"><img src="img/logo.png" alt=""></div>
+            <a href="#" id="navigation" onclick=" document.getElementById('teste').style.visibility='',document.getElementById('navigation').style.visibility='hidden'"></a>
+            <p class="right registre-se"><a href="#" onclick="document.getElementById('registro').style.visibility=''">Bem Vindo Usuario <img src="img/market.png" style="padding-left:5px;" class="right" alt=""></a></p>
+            <div ng-controller="LoginController" id="registro" style="visibility:hidden; position:absolute; margin:-100px 0 0 935px; width:200px; height:110px; background:rgba(0, 0, 0, 0.4);">
+                <!--Login-->
+                <form action="" class="formee" id="formee">
+                    <input style="margin-top:20px; magin-left:2px; padding:10px; width:95%;" type="text" ng-model="usuario.login">
+                    <input style="margin-top:5px; width:95%; magin-left:2px;" type="password" ng-model="usuario.senha">
+                    <button ng-click="registrar(usuario)">Registrar!</button>
+                </form>
+                <!--Final Login-->
+            </div>
+            <div ng-controller="LogarController" id="login" style="visibility:hidden; position:absolute; margin:-100px 0 0 935px; width:200px; height:110px; background:rgba(0, 0, 0, 0.4);">
+                <form action="" class="formee" id="formee">
+                    <input class="my-input" style="margin-top:20px; magin-left:2px; padding:10px; width:95%;" type="text" ng-model="usuario.login">
+                    <input style="margin-top:5px; width:95%; magin-left:2px;" type="password" ng-model="usuario.senha">
+
+                    <button ng-click="compare()">Logar</button>{{result}}
+
+                </form>
+            </div>
+            <p class="right login"><a href="#" onclick="document.getElementById('login').style.visibility=''">Entrar</p>
+            <nav id="teste" style="visibility:hidden;">
+               <ul>
+                    <li><a href="index.html">PAGINA INICIAL</a></li>
+                <li><a href="">SHOPPING</a></li>
+                <li><a href="">DOWNLOADS</a></li>
+                <li><a href="">LOJAS</a></li>
+                <li><a href="">PRAÇA DE ALIMENTAÇÃO</a></li>
+                <li><a href="">CONTATO</a></li>
+                <li class="right" style="margin-right:360px; margin-top:-230px;"><img src="img/lupa.png" alt=""></li>
+                <li>
+                    <form style="position:absolute; margin:-270px 0 0 660px;" id="formee" class="formee" action="">
+                        <input style="width:200px; " type="text" value="Procure por produtos..." />
+                    </form>
+                </li>
+                </ul>
+                <li style="list-style:none;" class="close right">
+                    <a href="#" onclick="document.getElementById('teste').style.visibility='hidden',document.getElementById('navigation').style.visibility=''"><img src="img/botaoX.png" alt=""></a>
+
+                </li>
+                </nav>
+
+        </section>
+    </header>
+
+    <section id="destaques">
+        <div class="content">
+            <p>
+                <img src="img/rouparennerg.jpg" width="400px" height="500px" alt="" class="left">
+                <h1>CALÇA CULOTE ROSA ESCURO INFANTIL PP</h1>
+            </p>
+            <p>
+                <ul style="list-style:none;">
+                    <li><img src="img/top.png" alt=""></li>
+                    <li>
+                        <h3>Gênero : Feminino</h3></li>
+                    <li>
+                        <h3>Tamanho Retroca Ajuda : PP</h2></li>
+                    <li>
+                        <h3>Tamanho Marca : 0-3m</h3></li>
+                    <li>
+                        <h3>Idade Sugerida : Recém-nascido</h3></li>
+                    <li>
+                        <h3>Material : Não disponível</h3></li>
+                    <li>
+                        <h3>Cor : Rosa</h3></li>
+                    <li>
+                        <h3>Condição : Excelente</h3></li>
+                </ul>
+                <img src="img/etiquetadesconto.png" style="margin:-100px 50px 0 0;" alt="" class="right">
+            </p>
+            <div class="comprar" style="">COMPRAR</div>
+        </div>
+    </section>
+    <footer style="margin:100px 0 0 0;">
+        <section class="container">
+            <img class="left;" style="margin-top:-20px;" width="200px" height="200px" src="img/logo.png" alt="">
+        </section>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
